@@ -10,3 +10,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@theme {
+  --color-primary: oklch(0.828 0.111 230.318);
+
+  --animate-letter: letter 0.7s ease-in-out infinite;
+
+  @keyframes letter {
+
+    0%,
+    100% {
+      transform: translateY(0);
+      background: oklch(92.2% 0 0);
+    }
+
+    50% {
+      transform: translateY(-10%);
+      background: oklch(80.8% 0 0);
+    }
+  }
+}
