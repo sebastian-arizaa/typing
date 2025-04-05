@@ -13,7 +13,6 @@
 
 @theme {
   --color-primary: oklch(0.828 0.111 230.318);
-
   --animate-letter: letter 0.7s ease-in-out infinite;
 
   @keyframes letter {
@@ -29,4 +28,27 @@
       background: oklch(80.8% 0 0);
     }
   }
+}
+
+#root {
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
+}
+
+.spaceLetter {
+  width: 10px;
+}
+
+.hoverLetter {
+  background-color: oklch(96.7% 0.003 264.542);
+  animation: var(--animate-letter);
+}
+
+.correctLetter {
+  background-color: oklch(92.5% 0.084 155.995);
+}
+
+.inCorrectLetter {
+  background-color: oklch(80.8% 0.114 19.571);
 }
