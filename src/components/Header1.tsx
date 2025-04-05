@@ -1,4 +1,4 @@
-export function Header() {
+export function Header1() {
   return (
     <header>
         <nav className="flex justify-center py-2 px-[10%] bg-primary text-white">

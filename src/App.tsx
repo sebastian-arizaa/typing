@@ -2,7 +2,7 @@ import { useState } from "react"
 import { PageContext } from "./context/PageContext"
 import { Page } from "./pages/Page"
 import { CurrentPage, LevelType } from "./types"
-import { Header } from "./components/Header"
+import { Header1 } from "./components/Header1"
 import { CurrenLevelContext } from "./context/CurrentLevelContext"
 
 
@@ -13,7 +13,7 @@ function App() {
     <>
       <PageContext.Provider value={{currentPage, setCurrentPage}}>
         <CurrenLevelContext.Provider value={{currentLevel, setCurrentLevel}}>
-          <Header/>
+          <Header1/>
           <Page/>
         </CurrenLevelContext.Provider>
       </PageContext.Provider>

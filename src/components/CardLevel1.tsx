@@ -8,7 +8,7 @@ interface Props {
   title: string
 }
 
-export function CardLevel({levelNumber, title}: Props) {
+export function CardLevel1({levelNumber, title}: Props) {
   const {setCurrentPage} = useContext(PageContext)
   const {setCurrentLevel} = useContext(CurrenLevelContext)
   const handleOnClick = () => {
