@@ -11,7 +11,8 @@ export function Level() {
   const lettersRef = useRef<HTMLDivElement>(null)
   const correctTypingRef = useRef<HTMLAudioElement>(null)
   const errorTypingRef = useRef<HTMLAudioElement>(null)
-  const percentageBar = useRef<HTMLDivElement>(null)
+  const percentageBarRef = useRef<HTMLDivElement>(null)
+  const hiddenInputRef = useRef<HTMLInputElement>(null)
 
   const [currentLetter, setCurrentLetter] = useState(0)
   const [correctLetters, setCorrectLetters] = useState(0)
@@ -27,12 +28,6 @@ export function Level() {
     const percent = ((correctLetters / logicText.length) * 100).toFixed(1)
     return percent
   }
-
-  useEffect(()=> {
-    const percent = ((currentLetter / logicText.length) * 100).toFixed(1)
-
-    if(percentageBar.current) percentageBar.current.style.width = `${percent}%`
-  }, [currentLetter, logicText])
 
   useEffect(() => {
     if(lettersRef.current) {
@@ -171,10 +166,19 @@ export function Level() {
     setLogicText(()=> currentLevel.content.split(""))
   }, [currentLevel])
 
+  useEffect(()=> {
+    if(hiddenInputRef.current) hiddenInputRef.current.focus()
+  }, [])
+
+  useEffect(()=> {
+    const percent = ((currentLetter / logicText.length) * 100).toFixed(1)
+    if(percentageBarRef.current) percentageBarRef.current.style.width = `${percent}%`
+  }, [currentLetter, logicText])
+
   return (
     <div className="relative flex flex-col gap-4 h-full px-[20%] max-sm:px-[5%] select-none">
       <div className="flex justify-between items-center py-4 border-b-4 border-primary">
-          <div onClick={handleOnClick} className="text-4xl cursor-pointer hover:scale-110 transition-transform">⮨</div>
+          <div onClick={handleOnClick} className="text-4xl font-bold cursor-pointer hover:scale-110 transition-transform">{"<"}</div>
           <div className="flex gap-4 text-lg max-sm:text-sm">
             <span className="pb-1 border-b-2 border-primary">Velocidad: {typingSpeed} <span className="text-xs">PPM</span></span>
             <span className="pb-1 border-b-2 border-primary">Precición: {getAccurancy()}%</span>
@@ -183,7 +187,7 @@ export function Level() {
       <h1 className="text-center text-2xl font-semibold text-black/60 font-mono">{currentLevel.title}</h1>
       <div ref={lettersRef} className="flex flex-wrap gap-y-2  gap-x-1 text-2xl max-sm:text-lg text-black/80 font-mono"></div>
       <div className="w-full mt-4 border border-primary">
-        <div ref={percentageBar} className={`w-2 h-4 bg-primary`}></div>
+        <div ref={percentageBarRef} className={`w-2 h-4 bg-primary`}></div>
       </div>
       {currentLetter == logicText.length && (
         <div className="absolute w-full h-full top-0 left-0 flex items-center justify-center bg-white/80">
@@ -195,6 +199,7 @@ export function Level() {
           </div>
         </div>  
       )}
+      {/* <input ref={hiddenInputRef} className="hidden absolute max-sm:visible! w-4 text-white outline-none" type="text"/> */}
       <audio ref={correctTypingRef} className="hidden" src={correctTypingSound} controls={true}></audio>
       <audio ref={errorTypingRef} className="hidden" src={errorTypingSound} controls={true}></audio>
     </div>

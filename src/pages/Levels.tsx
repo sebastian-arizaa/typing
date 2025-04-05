@@ -13,9 +13,9 @@ export function Levels() {
       </div>
       {showMessage && (
         <div className="absolute w-full h-full top-0 left-0 flex items-center justify-center bg-white/80">
-        <div className="flex flex-col gap-2 -translate-y-1/2 max-w-68 py-4 px-8 text-center text-lg text-white font-semibold bg-primary rounded-sm">
+        <div className="flex flex-col gap-2 -translate-y-1/3 max-w-68 py-4 px-8 text-center text-lg text-white font-semibold bg-primary rounded-sm">
           <p className="border-b-2 border-white text-xl ">Aviso!</p>
-          <p className="text-base">Esta pagina esta orienda al uso de un teclado fisico, por el momento no funciona con el teclado de un movil, pero le recomendamos visitar esta pagina en un computador, Gracias.</p>
+          <p className="text-base">Esta pagina esta orienda al uso de un teclado fisico, por el momento no funciona con el teclado de un movil, te recomiendo visitar esta pagina en un computador, Gracias.</p>
           <button onClick={() => setShowMessage(false)} className="bg-white text-black/80 font-normal rounded cursor-pointer hover:scale-105 transition-transform">Seguir</button>
         </div>
       </div>
